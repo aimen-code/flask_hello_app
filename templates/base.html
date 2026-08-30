@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %} Turbine App {% endblock %}</title>
+    </head>
+    <body>
+        <div id ="header"> Turbine App</div>
+
+        <div>
+            <ul>
+                <li><a href="{{url_for('home')}}">Home</a></li>
+
+                <li><a href="{{url_for('login')}}">Login</a></li>
+            </ul>
+        </div>
+         {% block content %}{% endblock %}
+    </body>
+</html>
