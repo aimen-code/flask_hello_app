@@ -1,17 +1,15 @@
 from flask import Flask, render_template
-from flask import request
+from flask import request,redirect,url_for
 
 app = Flask(__name__)
 
 user = {"password": "admin"}
 
-@app.route('/')
+# @app.route('/')
+# def index():
+#     return render_template('login.html')
 
-def home():
-
-    return render_template('home.html')
-
-@app.route('/login', methods=['GET','POST'])
+@app.route('/login', methods=['get','POST'])
 
 def login():
 
@@ -21,12 +19,20 @@ def login():
 
         if password == user['password']:
 
-            return render_template('home.html')
+            return redirect(url_for('home'))
         
         else:
 
             return render_template('login.html',message="Invalid password")
     return render_template('login.html')
+
+@app.route('/home')
+
+def home():
+
+    return render_template('home.html')
+
+
 
 if __name__ == '__main__':
     
